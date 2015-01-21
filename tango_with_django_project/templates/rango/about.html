@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+{% load static %} <!-- New line -->
+<html>
+
+    <head>
+        <title>About</title>
+		<link rel="stylesheet" href="{% static "css/base.css" %}" /> <!-- CSS -->
+        <script src="{% static "js/jquery.js" %}"></script> <!-- JavaScript -->
+    </head>
+	
+	<body>
+		<h1>Rango says here is the about page.</h1>
+        <p>This tutorial has been put together by <strong>{{boldname}}</strong></br></p>
+		<img src="{% static "images/Nayhall.jpeg" %}" alt="Picture of Nayhall" width="300" /></br> <!-- Images -->
+		<a href='/rango'>Go back</a>
+	</body>
+</html>
