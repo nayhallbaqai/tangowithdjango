@@ -11,56 +11,67 @@ def populate():
     python_cat = add_cat('Python',128,64)
 
     add_page(cat=python_cat,
-        title="Official Python Tutorial",
-        url="http://docs.python.org/2/tutorial/", views=4)
+             title="Official Python Tutorial",
+             url="http://docs.python.org/2/tutorial/", views=4)
 
     add_page(cat=python_cat,
-        title="How to Think like a Computer Scientist",
-        url="http://www.greenteapress.com/thinkpython/",views=6)
+             title="How to Think like a Computer Scientist",
+             url="http://www.greenteapress.com/thinkpython/",views=6)
 
     add_page(cat=python_cat,
-        title="Learn Python in 10 Minutes",
-        url="http://www.korokithakis.net/tutorials/python/",views=12)
+             title="Learn Python in 10 Minutes",
+             url="http://www.korokithakis.net/tutorials/python/",views=12)
 
     django_cat = add_cat("Django",64,32)
 
     add_page(cat=django_cat,
-        title="Official Django Tutorial",
-        url="https://docs.djangoproject.com/en/1.5/intro/tutorial01/", views=12)
+             title="Official Django Tutorial",
+             url="https://docs.djangoproject.com/en/1.5/intro/tutorial01/", views=12)
 
     add_page(cat=django_cat,
-        title="Django Rocks",
-        url="http://www.djangorocks.com/", views=4)
+             title="Django Rocks",
+             url="http://www.djangorocks.com/", views=4)
 
     add_page(cat=django_cat,
-        title="How to Tango with Django",
-        url="http://www.tangowithdjango.com/", views=5)
+             title="How to Tango with Django",
+             url="http://www.tangowithdjango.com/", views=5)
 
     frame_cat = add_cat("Other Frameworks",32,16)
 
     add_page(cat=frame_cat,
-        title="Bottle",
-        url="http://bottlepy.org/docs/dev/",views=7)
+             title="Bottle",
+             url="http://bottlepy.org/docs/dev/",views=7)
 
     add_page(cat=frame_cat,
-        title="Flask",
-        url="http://flask.pocoo.org",views=10)
+             title="Flask",
+             url="http://flask.pocoo.org",views=10)
 
-    # Print out what we have added to the user.
-    for c in Category.objects.all():
-        for p in Page.objects.filter(category=c):
-            print "- {0} - {1}".format(str(c), str(p))
+    my_cat = add_cat("Nayhall Baqai",70,50)
+
+    add_page(cat=my_cat,
+             title="GitHub",
+             url="https://github.com/nayhallbaqai",views=30)
+
+    add_page(cat=my_cat,
+         title="PythonAnywhere",
+         url="https://www.pythonanywhere.com/user/nayhallbaqai/consoles/",views=20)
+
+
+# Print out what we have added to the user.
+for c in Category.objects.all():
+    for p in Page.objects.filter(category=c):
+        print "- {0} - {1}".format(str(c), str(p))
 
 def add_page(cat, title, url, views):
-	p = Page.objects.get_or_create(category=cat, title=title, url=url, views=views)[0]
-	Page.objects.filter(title=title).update(views=views)
-	return p
+    p = Page.objects.get_or_create(category=cat, title=title, url=url, views=views)[0]
+    Page.objects.filter(title=title).update(views=views)
+    return p
 
 def add_cat(name,views,likes):
-	c = Category.objects.get_or_create(name=name)[0]
-	Category.objects.filter(name=name).update(views=views)
-	Category.objects.filter(name=name).update(likes=likes)
-	return c
+    c = Category.objects.get_or_create(name=name)[0]
+    Category.objects.filter(name=name).update(views=views)
+    Category.objects.filter(name=name).update(likes=likes)
+    return c
 
 # Start execution here!
 if __name__ == '__main__':
